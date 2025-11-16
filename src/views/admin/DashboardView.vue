@@ -44,16 +44,21 @@
      
 
     <!-- Biểu đồ -->
-    <el-row :gutter="12">
-      <el-col :span="16">
-        <el-card class="rounded-2xl mt-5 !shadow-amber-100" style="width:100%">
-          <ApexChart type="bar" :options="chartOptions" :series="series" height="350" />
-        </el-card>
+    <el-row :gutter="12" class="mt-5">
+      <el-col :span="14">
+        <!-- <el-card class="rounded-2xl mt-5 !shadow-amber-100" style="width:100%"> -->
+          <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200">
+            <OrderChart />
+          </div>
+        <!-- </el-card> -->
       </el-col>
-      <el-col :span="8">
-        <el-card class="rounded-2xl mt-5" style="width:100%">
-          <ApexChart type="bar" :options="chartOptions" :series="series" height="350" />
-        </el-card>
+      <el-col :span="10">
+        <!-- <el-card class="rounded-2xl mt-5" style="width:100%">
+          <VisitorChart />
+        </el-card> -->
+        <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200">
+            <VisitorChart />
+          </div>
       </el-col>
     </el-row>
 
@@ -64,24 +69,8 @@
 import ApexChart from 'vue3-apexcharts'
 import { ref } from 'vue'
 import { Sell } from '@element-plus/icons-vue'
-
-// Start: Biểu đồ
-const series = ref([
-  { name: 'Doanh thu', data: [44, 55, 41, 67, 22, 43, 50] }
-])
-const chartOptions = ref({
-  chart: { id: 'basic-bar' },
-  xaxis: { categories: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'] },
-  title: { text: 'TỔNG DOANH THU TRONG TUẦN', align: 'left' },
-  colors: ['#1e85ff', '#3b82f6'],
-  plotOptions: { bar: { borderRadius: 6, columnWidth: '50%' } },
-  dataLabels: { enabled: false },
-  yaxis: { title: { text: 'Triệu VNĐ' } },
-  legend: { position: 'bottom' },
-  grid: { borderColor: '#eee' },
-  tooltip: { theme: 'light' },
-})
-// End: Biểu đồ
+import OrderChart from '@/components/dashboard/OrderChart.vue'
+import VisitorChart from '@/components/dashboard/VisitorChart.vue'
 
 // Start: Thông số
 const info = ref([
