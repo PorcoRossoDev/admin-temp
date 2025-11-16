@@ -55,12 +55,13 @@ const chartOptions = ref({
   xaxis: { categories: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'] },
   // title: { text: 'TỔNG DOANH THU TRONG TUẦN', align: 'left' },
   colors: ['#1e85ff', '#3b82f6'],
-  plotOptions: { bar: { borderRadius: 6, columnWidth: '50%' } },
+  plotOptions: { bar: { borderRadius: 3, columnWidth: '13px' } },
   dataLabels: { enabled: false },
   yaxis: { title: { text: 'Triệu VNĐ' } },
   legend: { position: 'bottom' },
   grid: { borderColor: '#eee' },
   tooltip: { theme: 'light' },
+  
 })
 // End: Biểu đồ
 </script>

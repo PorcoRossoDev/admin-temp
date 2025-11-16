@@ -62,6 +62,9 @@
       </el-col>
     </el-row>
 
+    <!-- Đơn hàng -->
+     <Order />
+
   </div>
 </template>
 
@@ -71,6 +74,7 @@ import { ref } from 'vue'
 import { Sell } from '@element-plus/icons-vue'
 import OrderChart from '@/components/dashboard/OrderChart.vue'
 import VisitorChart from '@/components/dashboard/VisitorChart.vue'
+import Order from '@/components/dashboard/Order.vue'
 
 // Start: Thông số
 const info = ref([

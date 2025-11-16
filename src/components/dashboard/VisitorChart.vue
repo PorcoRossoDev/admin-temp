@@ -40,16 +40,22 @@ const chartOptions = ref({
   colors: ['#1e85ff', '#3b82f6'],
   plotOptions: {
     bar: {
-      borderRadius: 6,
+      borderRadius: 3,
       borderRadiusApplication: 'end',
       horizontal: true,
-      columnWidth: '10px'
+      barHeight: '13px'
     }
   },
   dataLabels: { enabled: false },
   yaxis: { title: { text: 'Triệu VNĐ' } },
   legend: { position: 'bottom' },
-  grid: { borderColor: '#eee' },
+  grid: { borderColor: '#eee',
+    yaxis: {
+    lines: {
+      show: false   // <-- tắt đường ngang
+    }
+  }
+   },
   tooltip: { theme: 'light' },
 })
 // End: Biểu đồ
