@@ -1,21 +1,7 @@
 <template>
 
-  <!-- Header -->
-  <div class="flex items-center justify-between">
-    <h1 class="text-[20px] font-bold">Dashboard</h1>
-
-    <!-- Breadcrumb -->
-    <div>
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
-        <el-breadcrumb-item>
-          <a href="/">promotion management</a>
-        </el-breadcrumb-item>
-        <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-        <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
-  </div>
+  <!-- Breadcrumb -->
+  <Breadcrumb title='Dashboard' />
 
   <!-- Main -->
   <div>
@@ -72,6 +58,7 @@
 import ApexChart from 'vue3-apexcharts'
 import { ref } from 'vue'
 import { Sell } from '@element-plus/icons-vue'
+import Breadcrumb from './common/Breadcrumb.vue'
 import OrderChart from '@/components/dashboard/OrderChart.vue'
 import VisitorChart from '@/components/dashboard/VisitorChart.vue'
 import Order from '@/components/dashboard/Order.vue'

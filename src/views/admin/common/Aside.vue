@@ -1,6 +1,6 @@
 <template>
   <el-aside :class="[
-    'flex flex-col h-[100vh] shadow-[0_1px_3px_0_rgb(0_0_0_/_0.1),_0_1px_2px_-1px_rgb(0_0_0_/_0.1)] bg-white transition-all duration-300',
+    'flex flex-col !h-full shadow-[0_1px_3px_0_rgb(0_0_0_/_0.1),_0_1px_2px_-1px_rgb(0_0_0_/_0.1)] bg-white transition-all duration-300',
     isCollapse ? '!w-[70px]' : '!w-[250px]'
   ]">
     <!-- LOGO -->
@@ -16,7 +16,7 @@
     <!-- MENU -->
     <div class="flex-1 overflow-hidden">
       <el-scrollbar class="h-full">
-        <el-menu class="!border-0 !px-4 !mt-[15px] tx-el-menu-aside" background-color="#fff" text-color="#333" active-text-color="#409EFF"
+        <el-menu class="!border-0 !px-4 !mt-[15px] tx-el-menu-aside" router background-color="#fff" text-color="#333" active-text-color="#409EFF"
           :default-active="1" :default-openeds="[]" :collapse="isCollapse" :collapse-transition="false"
           menu-trigger="hover"
           popper-append-to-body>
@@ -26,7 +26,7 @@
             <template #title>
               <span class="!px-4" v-show="!isCollapse">Menu</span>
             </template>
-            <el-menu-item class="!h-10 !px-[15px]" index="1">
+            <el-menu-item class="!h-10 !px-[15px]" index="1" :route="{ name: 'admin.dashboard' }">
               <el-icon>
                 <House />
               </el-icon>
@@ -78,8 +78,8 @@
                 </el-icon>
                 <span v-show="!isCollapse">Bài viết</span>
               </template>
-              <el-menu-item index="2-1"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh sách bài viết</el-menu-item>
-              <el-menu-item index="2-2"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh mục bài viết</el-menu-item>
+              <el-menu-item index="2-1" :route="{ name: 'admin.article' }"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh sách bài viết</el-menu-item>
+              <el-menu-item index="2-2" :route="{ name: 'admin.category_article' }"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh mục bài viết</el-menu-item>
             </el-sub-menu>
 
             <el-sub-menu index="3">
@@ -89,8 +89,8 @@
                 </el-icon>
                 <span v-show="!isCollapse">Sản phẩm</span>
               </template>
-              <el-menu-item index="3-1"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh sách sản phẩm</el-menu-item>
-              <el-menu-item index="3-2"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh mục sản phẩm</el-menu-item>
+              <el-menu-item index="3-1" :route="{ name: 'admin.product' }"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh sách sản phẩm</el-menu-item>
+              <el-menu-item index="3-2" :route="{ name: 'admin.category_product' }"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh mục sản phẩm</el-menu-item>
             </el-sub-menu>
 
             <el-sub-menu index="4">

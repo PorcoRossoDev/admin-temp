@@ -1,13 +1,13 @@
 <template>
-    <el-container class="h-[100vh]">
+    <el-container class="h-screen">
         <!-- Sidebar -->
-        <Aside />
+        <Aside class="h-full" />
 
         <!-- Content -->
-        <div class="flex-1">
+        <div class="flex-1 h-full flex flex-col">
             <Header />
 
-            <el-main>
+            <el-main class="flex-1 overflow-auto">
                 <RouterView />
             </el-main>
         </div>
