@@ -45,7 +45,7 @@
             <!-- Thêm mới -->
             <el-button @click="$router.push({ name: 'admin.product_add' })" color="#626aef" :dark="isDark" class="flex gap-x-3">
                 <span class="border-[0.5px] rounded-full w-4 h-4 flex items-center justify-center mr-1">
-                    <el-icon :size="12"><Plus /></el-icon>
+                    <el-icon :size="12"><CirclePlus /></el-icon>
                 </span>  
                 <span>Thêm mới</span>
             </el-button>
@@ -143,7 +143,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Search, Document, EditPen, Sell, DeleteFilled, Plus } from '@element-plus/icons-vue'
+import { Search, Document, EditPen, Sell, DeleteFilled, CirclePlus } from '@element-plus/icons-vue'
 import Breadcrumb from '@/views/admin/common/Breadcrumb.vue'
 
 const categories = ref([

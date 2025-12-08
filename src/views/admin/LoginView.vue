@@ -21,7 +21,7 @@ const handleSubmit = () => {
         ElMessage.success(`Welcome back, ${form.value.email}`)
         auth.login(form.value)
         router.push({ name: 'admin.dashboard' })
-    }, 3000)
+    }, 100)
 }
 </script>
 

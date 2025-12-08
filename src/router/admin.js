@@ -36,6 +36,11 @@ export default [
                 name: 'admin.product_add',
                 component: () => import('@/views/admin/product/ProductDetail.vue'),
             },
+            {
+                path: 'gallery',
+                name: 'admin.gallery',
+                component: () => import('@/views/admin/gallery/Gallery.vue'),
+            },
         ]
     }
 ]

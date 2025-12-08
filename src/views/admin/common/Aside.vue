@@ -107,8 +107,8 @@
                 <el-icon><VideoPlay /></el-icon>
                 <span v-show="!isCollapse">Media</span>
               </template>
-              <el-menu-item index="5-1"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh sách media</el-menu-item>
-              <el-menu-item index="5-2"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh mục media</el-menu-item>
+              <el-menu-item index="5-1" :route="{name: 'admin.gallery'}"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh sách media</el-menu-item>
+              <el-menu-item index="5-2" :route="{name: 'admin.gallery'}"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh mục media</el-menu-item>
             </el-sub-menu>
 
             <el-sub-menu index="6">
