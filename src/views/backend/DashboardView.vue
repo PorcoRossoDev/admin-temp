@@ -58,7 +58,7 @@
 import ApexChart from 'vue3-apexcharts'
 import { ref } from 'vue'
 import { Sell } from '@element-plus/icons-vue'
-import Breadcrumb from './common/Breadcrumb.vue'
+import Breadcrumb from '../backend/common/Breadcrumb.vue'
 import OrderChart from '@/components/dashboard/OrderChart.vue'
 import VisitorChart from '@/components/dashboard/VisitorChart.vue'
 import Order from '@/components/dashboard/Order.vue'

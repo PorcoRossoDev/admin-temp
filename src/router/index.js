@@ -7,9 +7,9 @@ const router = createRouter({
   routes: [
     ...adminRoutes,
     {
-      path: '/login',
+      path: '/admin/login',
       name: 'login',
-      component: () => import('@/views/admin/LoginView.vue'),
+      component: () => import('@/views/backend/LoginView.vue'),
     },
   ],
 })

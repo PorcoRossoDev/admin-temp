@@ -15,6 +15,6 @@
 </template>
 
 <script setup>
-import Aside from '@/views/admin/common/Aside.vue';
-import Header from '@/views/admin/common/Header.vue';
+import Aside from '@/views/backend/common/Aside.vue';
+import Header from '@/views/backend/common/Header.vue';
 </script>

@@ -1,7 +1,7 @@
 <template>
 
     <!-- Breadcrumb -->
-    <Breadcrumb title='Danh mục bài viết' />
+    <Breadcrumb title='Danh mục thuộc tính' />
 
     <!-- Main -->
     <div class="bg-white shadow-amber-100 p-5 pt-3 rounded-2xl border border-gray-200 mt-6">
@@ -43,9 +43,9 @@
              </div>
 
             <!-- Thêm mới -->
-            <el-button color="#626aef" :dark="isDark" class="flex gap-x-3">
-                <span class="border-[0.5px] rounded-full w-4 h-4 flex items-center justify-center mr-1">
-                    <el-icon :size="12"><Plus /></el-icon>
+            <el-button @click="drawer = true" type="primary" :dark="isDark" class="flex gap-x-3">
+                <span class="mr-1">
+                    <el-icon :size="16"><CirclePlus /></el-icon>
                 </span>  
                 <span>Thêm mới</span>
             </el-button>
@@ -56,9 +56,9 @@
             <el-table-column type="selection" width="30" />
 
             <!-- Tiêu đề -->
-            <el-table-column label="Tiêu đề" width="350" class-name="text-black font-medium text-left" show-overflow-tooltip>
+            <el-table-column label="Tiêu đề" width="" class-name="text-black font-medium text-left" show-overflow-tooltip>
                 <template #default="scope">
-                    <span class="font-normal text-blue-600">
+                    <span class="font-normal block py-2">
                         {{ scope.row.title }}
                     </span>
                 </template>
@@ -117,14 +117,60 @@
         <div class="flex justify-end">
             <el-pagination size="small" class="mt-5 " background layout="prev, pager, next" :total="1000" />
         </div>
-
     </div>
+
+    <el-drawer v-model="drawer" :direction="rtl" size="40%" :with-header="false">
+        <h2 class="font-bold mt-6 mb-4 text-xl">Thêm danh mục</h2>
+        <div>
+            <div class="mt-4">
+                <h3 class="text-sm">Tiêu đề <span class="text-red-600 mr-1">*</span></h3>
+                <el-input size="large" class="w-full mt-2" placeholder="" />
+            </div>
+            <el-row class="*:mt-4" :gutter="24">
+                <el-col :span="12">
+                    <h3 class="text-sm">Danh mục <span class="text-red-600 mr-1">*</span></h3>
+                    <el-select v-model="value" size="large" placeholder="Select" class="w-full mt-2">
+                        <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                        />
+                    </el-select>
+                </el-col>
+                <el-col :span="12">
+                    <h3 class="text-sm">Kiểu hiển thị <span class="text-red-600 mr-1">*</span></h3>
+                    <el-select v-model="value" size="large" placeholder="Select" class="w-full mt-2">
+                        <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                        />
+                    </el-select>
+                </el-col>
+            </el-row>
+            <div class="mt-4">
+                <h3 class="text-sm">Xuất bản <span class="text-red-600 mr-1">*</span></h3>
+                <el-radio-group v-model="publish">
+                    <el-radio value="1" size="large">Xuất bản</el-radio>
+                    <el-radio value="0" size="large">Không xuất bản</el-radio>
+                </el-radio-group>
+            </div>
+            <div class="mt-4 text-right">
+                <el-button type="primary">Cập nhật</el-button>
+                <el-button @click="drawer = false" type="info">Huỷ</el-button>
+            </div>
+        </div>
+    </el-drawer>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { Search, Document, EditPen, Sell, DeleteFilled, Plus } from '@element-plus/icons-vue'
-import Breadcrumb from '@/views/admin/common/Breadcrumb.vue'
+import { Search, Document, EditPen, Sell, DeleteFilled, CirclePlus } from '@element-plus/icons-vue'
+import Breadcrumb from '@/views/backend/common/Breadcrumb.vue'
+const drawer = ref(false)
+const direction = ref('rtl')
 
 const categories = ref([
   {
@@ -276,6 +322,32 @@ const posts = [
         views: 600,
         created_at: "2025-11-07"
     },
+]
+
+// Danh mục cho select
+const value = ref('')
+const publish = ref('1')
+const options = [
+  {
+    value: 'Option1',
+    label: 'Option1',
+  },
+  {
+    value: 'Option2',
+    label: 'Option2',
+  },
+  {
+    value: 'Option3',
+    label: 'Option3',
+  },
+  {
+    value: 'Option4',
+    label: 'Option4',
+  },
+  {
+    value: 'Option5',
+    label: 'Option5',
+  },
 ]
 </script>
 

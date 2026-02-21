@@ -1,41 +1,23 @@
 <template>
 
     <!-- Breadcrumb -->
-    <Breadcrumb title='Thêm sản phẩm' />
+    <Breadcrumb title='Thêm trang mới' />
 
     <!-- Main -->
     <el-row :gutter="20">
         <el-col :span="16">
             <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
 
-                <h2 class="font-bold">Thông tin chung</h2>
+                <h1 class="font-bold capitalize pb-4 border-b border-gray-200">Thông tin chung</h1>
 
                 <!-- Tiêu đề -->
                 <div class="mt-4">
-                    <h3 class="text-xs"><span class="text-red-600 mr-1">*</span>Tiêu đề</h3>
+                    <h3 class="text-sm"><span class="text-red-600 mr-1">*</span>Tiêu đề</h3>
                     <el-input v-model="input1" size="large" class="w-full mt-2 !text-xs" placeholder="Nhập tiêu đề" />
                 </div>
 
-                <!-- Đường dẫn -->
                 <div class="mt-4">
-                    <h3 class="text-xs"><span class="text-red-600 mr-1">*</span>Đường dẫn</h3>
-                    <el-input v-model="input1" size="large" class="w-full mt-2 !text-xs" placeholder="Nhập đường dẫn">
-                        <template #prepend>Http://</template>
-                    </el-input>
-                </div>
-
-                <!-- Mã sản phẩm -->
-                <div class="mt-4">
-                    <h3 class="text-xs"><span class="text-red-600 mr-1">*</span>Mã sản phẩm</h3>
-                    <el-input v-model="input1" size="large" class="w-full mt-2" placeholder="" />
-                </div>
-            </div>
-
-            <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
-                <h2 class="font-bold">Nội dung</h2>
-                <!-- Mô tả -->
-                <div class="mt-4">
-                    <h3 class="text-xs">Mô tả</h3>
+                    <h3 class="text-sm">Nội dung</h3>
                     <div class="mt-2">
                         <Editor api-key="lfjyp1zowgxr0wayowsfvj10hjllwhpai8cyyzdip55ylql9" v-model="content" :init="{
                             height: 300,
@@ -47,71 +29,10 @@
                     </div>
                 </div>
 
-                <!-- Nội dung -->
-                <div class="mt-4">
-                    <h3 class="text-xs">Nội dung</h3>
-                    <div class="mt-2">
-                        <Editor api-key="lfjyp1zowgxr0wayowsfvj10hjllwhpai8cyyzdip55ylql9" v-model="content" :init="{
-                            height: 300,
-                            menubar: false,
-                            plugins: 'lists link image code table',
-                            toolbar:
-                                'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code',
-                        }" />
-                    </div>
-                </div>
-
-                <!-- <Variation /> -->
-                <!-- <VariationCard /> -->
-                <!-- <VariationEdit /> -->
-                
             </div>
 
-            <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
-                 <CustomFields />
-            </div>
-
-            <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
-                <!-- <VariationDynamicMain /> -->
-                <Variation/>
-            </div>
         </el-col>
         <el-col :span="8">
-            <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
-                <h2 class="font-bold">Cấu hình</h2>
-
-                <!-- Danh mục chính -->
-                <div class="mt-4">
-                    <h3 class="text-xs"><span class="text-red-600 mr-1">*</span>Danh mục chính</h3>
-                    <div class="mt-1">
-                        <el-select class="!w-full !text-xs" multiple filterable allow-create default-first-option
-                            :reserve-keyword="false" placeholder="Chọn danh mục">
-                            <el-option v-for="item in categories" :key="item.value" :label="item.label"
-                                :value="item.value" />
-                        </el-select>
-                    </div>
-                </div>
-
-                <!-- Danh mục phụ -->
-                <div class="mt-4">
-                    <h3 class="text-xs"><span class="text-red-600 mr-1">*</span>Danh mục phụ</h3>
-                    <div class="mt-1">
-                        <el-select class="!w-full" multiple filterable allow-create default-first-option
-                            :reserve-keyword="false" placeholder="Chọn danh mục">
-                            <el-option v-for="item in categories" :key="item.value" :label="item.label"
-                                :value="item.value" />
-                        </el-select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Thương hiệu -->
-            <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
-                <h2 class="font-bold">Thương hiệu</h2>
-                <div class="mt-4">
-                    <el-input-tag v-model="branchs" clearable placeholder="Nhập thương hiệu" class="!text-xs" />
-                </div>
-            </div>
 
             <!-- Xuất bản -->
             <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
@@ -136,7 +57,7 @@
             </div>
 
             <!-- Ảnh đại diện -->
-            <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
+            <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-5">
                 <h2 class="font-bold">Ảnh đại diện</h2>
                 <div class="mt-4">
                     <el-upload class="upload-demo" drag
@@ -153,30 +74,16 @@
                     </el-upload>
                 </div>
             </div>
-
-            <!-- Tag -->
-            <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
-                <h2 class="font-bold">Tags</h2>
+            
+            <!-- Template -->
+            <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-5">
+                <h2 class="font-bold">Template</h2>
                 <div class="mt-4">
-                    <el-input-tag v-model="tags" clearable placeholder="Nhập tags" class="!text-xs" />
-                </div>
-            </div>
-
-            <!-- Albums -->
-            <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
-                <h2 class="font-bold">Albums</h2>
-                <div class="mt-4">
-                    <el-upload v-model:file-list="fileList"
-                        action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15" list-type="picture-card"
-                        :on-preview="handlePictureCardPreview" :on-remove="handleRemove">
-                        <el-icon>
-                            <Plus />
-                        </el-icon>
-                    </el-upload>
-
-                    <el-dialog v-model="dialogVisible">
-                        <img class="w-full" :src="dialogImageUrl" alt="Preview Image" />
-                    </el-dialog>
+                    <el-select class="!w-full !text-xs" multiple filterable allow-create default-first-option
+                        :reserve-keyword="false" placeholder="Chọn template">
+                        <el-option v-for="item in categories" :key="item.value" :label="item.label"
+                            :value="item.value" />
+                    </el-select>
                 </div>
             </div>
 
@@ -188,14 +95,8 @@
 <script setup>
 import { ref } from 'vue'
 import { Search, Document, EditPen, Sell, DeleteFilled, Plus, UploadFilled } from '@element-plus/icons-vue'
-import Breadcrumb from '@/views/admin/common/Breadcrumb.vue'
+import Breadcrumb from '@/views/backend/common/Breadcrumb.vue'
 import Editor from "@tinymce/tinymce-vue";
-import Variation from './Variation.vue'
-import VariationCard from './VariationCard.vue'
-import VariationEdit from './VariationEdit.vue'
-import VariationDynamic from './VariationDynamic.vue'
-import VariationDynamicMain from './VariationDynamicMain.vue'
-import CustomFields from '@/components/custom_fields/CustomFields.vue'
 
 // Danh mục
 const categories = ref([
@@ -256,12 +157,6 @@ const handleChange = (file) => {
     image.value = URL.createObjectURL(file.raw)
 }
 
-// Tags
-const tags = ref(['tag1', 'tag2', 'tag3'])
-
-// Thương hiệu
-const branchs = ref(['tag1', 'tag2', 'tag3'])
-
 // Albums
 const fileList = ref([
     { name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' },
@@ -308,7 +203,7 @@ const handlePictureCardPreview = (uploadFile) => {
 
 /* albums */
 :deep(.el-upload-list--picture-card > *) {
-    width: calc(33.33% - 5px) !important;
+    width: calc(20% - 5px) !important;
     height: auto!important;
     margin-bottom:  5px !important;
 }

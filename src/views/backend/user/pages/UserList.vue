@@ -1,7 +1,7 @@
 <template>
 
     <!-- Breadcrumb -->
-    <Breadcrumb title='Danh mục bài viết' />
+    <Breadcrumb title='Thành viên' />
 
     <!-- Main -->
     <div class="bg-white shadow-amber-100 p-5 pt-3 rounded-2xl border border-gray-200 mt-6">
@@ -43,23 +43,49 @@
              </div>
 
             <!-- Thêm mới -->
-            <el-button color="#626aef" :dark="isDark" class="flex gap-x-3">
-                <span class="border-[0.5px] rounded-full w-4 h-4 flex items-center justify-center mr-1">
-                    <el-icon :size="12"><Plus /></el-icon>
+            <el-button @click="$router.push({ name: 'admin.add_user' })" type="primary" :dark="isDark" class="flex gap-x-3">
+                <span class="mr-1">
+                    <el-icon :size="16"><CirclePlus /></el-icon>
                 </span>  
                 <span>Thêm mới</span>
             </el-button>
         </div>
 
-        <el-table :data="posts" stripe class="!w-full">
+        <el-table :data="users" stripe class="!w-full">
             <!-- Chọn hàng -->
             <el-table-column type="selection" width="30" />
 
-            <!-- Tiêu đề -->
-            <el-table-column label="Tiêu đề" width="350" class-name="text-black font-medium text-left" show-overflow-tooltip>
+            <!-- Hình ảnh -->
+            <el-table-column label="" width="100" class-name="text-black font-medium">
                 <template #default="scope">
-                    <span class="font-normal text-blue-600">
-                        {{ scope.row.title }}
+                    <div class="flex justify-center items-center">
+                        <div class="w-[30px] h-[30px] items-center justify-center">
+                            <el-image :src="scope.row.avatar" class="rounded-full" />
+                        </div>
+                    </div>
+                </template>
+            </el-table-column>
+
+            <!-- Tiêu đề -->
+            <el-table-column label="Họ và tên" width="250" class-name="text-black font-medium text-left" show-overflow-tooltip>
+                <template #default="scope">
+                    <span class="font-normal">
+                        {{ scope.row.name }}
+                    </span>
+                </template>
+            </el-table-column>
+            
+            <!-- Quyền -->
+            <el-table-column label="Quyền" width="200" class-name="text-black font-medium text-left" show-overflow-tooltip>
+                <template #default="scope">
+                    <span class="font-medium text-xs py-1 px-2 rounded-md" 
+                        :class="{
+                            'bg-green-100 text-green-600': scope.row.role.toLowerCase() === 'administrator',
+                            'bg-blue-100 text-blue-600': scope.row.role.toLowerCase() === 'editor',
+                            'bg-red-100 text-red-600': scope.row.role.toLowerCase() === 'author',
+                            'bg-gray-100 text-gray-600': scope.row.role.toLowerCase() === 'designer',
+                        }">
+                        {{ scope.row.role }}
                     </span>
                 </template>
             </el-table-column>
@@ -81,8 +107,8 @@
             <!-- Tạo bởi -->
             <el-table-column label="Người tạo" width="120" class-name="text-black font-medium">
                 <template #default="scope">
-                    <span class="font-normal">
-                        {{scope.row.author}}
+                    <span class="font-medium text-gray-500 text-xs">
+                        {{scope.row.created_by}}
                     </span>
                 </template>
             </el-table-column>
@@ -90,7 +116,7 @@
             <!-- Thời gian -->
             <el-table-column label="Ngày tạo" width="150" class-name="text-black font-medium">
                 <template #default="scope">
-                    <span class="font-normal text-gray-600">
+                    <span class="font-normal text-gray-500 text-xs">
                         {{scope.row.created_at}}
                     </span>
                 </template>
@@ -123,8 +149,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Search, Document, EditPen, Sell, DeleteFilled, Plus } from '@element-plus/icons-vue'
-import Breadcrumb from '@/views/admin/common/Breadcrumb.vue'
+import { Search, Document, EditPen, Sell, DeleteFilled, CirclePlus } from '@element-plus/icons-vue'
+import Breadcrumb from '@/views/backend/common/Breadcrumb.vue'
 
 const categories = ref([
   {
@@ -165,117 +191,67 @@ const categories = ref([
   }
 ])
 
-const posts = [
+const users = [
     {
         id: 1,
-        title: "10 mẹo tối ưu SEO cho website bán hàng",
-        slug: "10-meo-toi-uu-seo-cho-website-ban-hang",
-        category: "SEO",
-        author: "Admin",
-        image: "https://preview.sprukomarket.com/blazor/server-app/bootstrap/mamix/dist/assets/images/media/media-79.jpg",
-        status: 0,
-        views: 1200,
-        created_at: "2025-11-16"
+        name: "Admin",
+        email: "admin@example.com",
+        role: "Administrator",
+        avatar: "https://ui-avatars.com/api/?name=Admin",
+        status: 1,
+        total_posts: 6,
+        total_views: 4460,
+        created_by: 'Xuân Bình',
+        created_at: "2025-11-07"
     },
     {
         id: 2,
-        title: "Hướng dẫn viết content chuẩn SEO cho người mới",
-        slug: "huong-dan-viet-content-chuan-seo",
-        category: "Content",
-        author: "Trung Nguyen",
-        image: "https://preview.sprukomarket.com/blazor/server-app/bootstrap/mamix/dist/assets/images/media/media-79.jpg",
+        name: "Trung Nguyen",
+        email: "trungnguyen@example.com",
+        role: "Editor",
+        avatar: "https://ui-avatars.com/api/?name=Trung+Nguyen",
         status: 1,
-        views: 300,
+        total_posts: 1,
+        total_views: 300,
+        created_by: 'Xuân Bình',
         created_at: "2025-11-15"
     },
     {
         id: 3,
-        title: "Top 5 framework JavaScript được sử dụng nhiều nhất 2025",
-        slug: "top-5-framework-js-2025",
-        category: "Công nghệ",
-        author: "Admin",
-        image: "https://preview.sprukomarket.com/blazor/server-app/bootstrap/mamix/dist/assets/images/media/media-79.jpg",
-        status: 1,
-        views: 980,
-        created_at: "2025-11-14"
-    },
-    {
-        id: 4,
-        title: "Cách chọn hosting phù hợp cho doanh nghiệp nhỏ",
-        slug: "cach-chon-hosting-cho-doanh-nghiep",
-        category: "Hosting",
-        author: "Huy Bui",
-        image: "https://preview.sprukomarket.com/blazor/server-app/bootstrap/mamix/dist/assets/images/media/media-79.jpg",
+        name: "Huy Bui",
+        email: "huybui@example.com",
+        role: "Author",
+        avatar: "https://ui-avatars.com/api/?name=Huy+Bui",
         status: 0,
-        views: 650,
+        total_posts: 1,
+        total_views: 650,
+        created_by: 'Xuân Bình',
         created_at: "2025-11-13"
     },
     {
-        id: 5,
-        title: "5 bước đơn giản để tăng tốc độ website",
-        slug: "5-buoc-tang-toc-website",
-        category: "Website",
-        author: "Admin",
-        image: "https://preview.sprukomarket.com/blazor/server-app/bootstrap/mamix/dist/assets/images/media/media-79.jpg",
+        id: 4,
+        name: "Minh Duc",
+        email: "minhduc@example.com",
+        role: "Designer",
+        avatar: "https://ui-avatars.com/api/?name=Minh+Duc",
         status: 0,
-        views: 740,
-        created_at: "2025-11-12"
-    },
-    {
-        id: 6,
-        title: "Thiết kế UI/UX: 7 nguyên tắc quan trọng cần nhớ",
-        slug: "thiet-ke-ui-ux-7-nguyen-tac",
-        category: "UI/UX",
-        author: "Minh Duc",
-        image: "https://preview.sprukomarket.com/blazor/server-app/bootstrap/mamix/dist/assets/images/media/media-79.jpg",
-        status: 0,
-        views: 540,
+        total_posts: 1,
+        total_views: 540,
+        created_by: 'Xuân Bình',
         created_at: "2025-11-11"
     },
     {
-        id: 7,
-        title: "So sánh Laravel và NodeJS trong dự án lớn",
-        slug: "so-sanh-laravel-va-nodejs",
-        category: "Backend",
-        author: "Admin",
-        image: "https://preview.sprukomarket.com/blazor/server-app/bootstrap/mamix/dist/assets/images/media/media-79.jpg",
+        id: 5,
+        name: "An Nguyen",
+        email: "annguyen@example.com",
+        role: "Author",
+        avatar: "https://ui-avatars.com/api/?name=An+Nguyen",
         status: 0,
-        views: 120,
-        created_at: "2025-11-10"
-    },
-    {
-        id: 8,
-        title: "Hướng dẫn bảo mật website WordPress",
-        slug: "huong-dan-bao-mat-wordpress",
-        category: "WordPress",
-        author: "Admin",
-        image: "https://preview.sprukomarket.com/blazor/server-app/bootstrap/mamix/dist/assets/images/media/media-79.jpg",
-        status: 0,
-        views: 820,
-        created_at: "2025-11-09"
-    },
-    {
-        id: 9,
-        title: "Cách chọn theme WordPress chuẩn SEO",
-        slug: "cach-chon-theme-wordpress-chuan-seo",
-        category: "WordPress",
-        author: "An Nguyen",
-        image: "https://preview.sprukomarket.com/blazor/server-app/bootstrap/mamix/dist/assets/images/media/media-79.jpg",
-        status: 0,
-        views: 450,
+        total_posts: 1,
+        total_views: 450,
+        created_by: 'Xuân Bình',
         created_at: "2025-11-08"
-    },
-    {
-        id: 10,
-        title: "Top plugin WordPress cần có cho website bán hàng",
-        slug: "top-plugin-wordpress-ban-hang",
-        category: "Plugin",
-        author: "Admin",
-        image: "https://preview.sprukomarket.com/blazor/server-app/bootstrap/mamix/dist/assets/images/media/media-79.jpg",
-        status: 0,
-        views: 600,
-        created_at: "2025-11-07"
-    },
+    }
 ]
 </script>
 

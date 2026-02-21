@@ -1,7 +1,7 @@
 <template>
 
     <!-- Breadcrumb -->
-    <Breadcrumb title='Bài viết' />
+    <Breadcrumb title='Danh mục bài viết' />
 
     <!-- Main -->
     <div class="bg-white shadow-amber-100 p-5 pt-3 rounded-2xl border border-gray-200 mt-6">
@@ -43,9 +43,9 @@
              </div>
 
             <!-- Thêm mới -->
-            <el-button color="#626aef" :dark="isDark" class="flex gap-x-3">
-                <span class="border-[0.5px] rounded-full w-4 h-4 flex items-center justify-center mr-1">
-                    <el-icon :size="12"><Plus /></el-icon>
+            <el-button type="primary" :dark="isDark" class="flex gap-x-3">
+                <span class="mr-1">
+                    <el-icon :size="16"><CirclePlus /></el-icon>
                 </span>  
                 <span>Thêm mới</span>
             </el-button>
@@ -55,31 +55,11 @@
             <!-- Chọn hàng -->
             <el-table-column type="selection" width="30" />
 
-            <!-- Hình ảnh -->
-            <el-table-column label="" width="100" class-name="text-black font-medium">
-                <template #default="scope">
-                    <div class="flex justify-center">
-                        <div class="w-[45px] h-[45px] rounded-md">
-                            <el-image :src="scope.row.image" class="rounded-md" />
-                        </div>
-                    </div>
-                </template>
-            </el-table-column>
-
             <!-- Tiêu đề -->
-            <el-table-column label="Tiêu đề" width="250" class-name="text-black font-medium text-left" show-overflow-tooltip>
+            <el-table-column label="Tiêu đề" width="" class-name="text-black font-medium text-left" show-overflow-tooltip>
                 <template #default="scope">
-                    <span class="font-normal text-blue-600">
+                    <span class="font-normal py-2 block">
                         {{ scope.row.title }}
-                    </span>
-                </template>
-            </el-table-column>
-            
-            <!-- Danh mục -->
-            <el-table-column label="Danh mục" width="200" class-name="text-black font-medium text-left" show-overflow-tooltip>
-                <template #default="scope">
-                    <span class="font-normal text-gray-600">
-                        {{ scope.row.category }}, {{ scope.row.category }}, {{ scope.row.category }}
                     </span>
                 </template>
             </el-table-column>
@@ -143,8 +123,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Search, Document, EditPen, Sell, DeleteFilled, Plus } from '@element-plus/icons-vue'
-import Breadcrumb from '@/views/admin/common/Breadcrumb.vue'
+import { Search, Document, EditPen, Sell, DeleteFilled, CirclePlus } from '@element-plus/icons-vue'
+import Breadcrumb from '@/views/backend/common/Breadcrumb.vue'
 
 const categories = ref([
   {
