@@ -8,7 +8,7 @@
             <!-- Danh sách -->
             <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
                 <h2 class="font-bold">Thêm các mục menu</h2>
-                <el-collapse accordion class="mt-4">
+                <el-collapse class="mt-4">
                     <el-collapse-item name="1">
                         <template #title="{ isActive }">
                             <h3 class="font-semibold text-md text-[14px]" :class="['title-wrapper', { 'is-active': isActive }]">
@@ -62,23 +62,13 @@
 
                 <h1 class="font-bold capitalize pb-4 border-b border-gray-200">Cấu trúc menu</h1>
 
-                <!-- Tiêu đề -->
-                <div class="mt-4">
-                    <h3 class="text-sm"><span class="text-red-600 mr-1">*</span>Tiêu đề</h3>
-                    <el-input v-model="input1" size="large" class="w-full mt-2 !text-xs" placeholder="Nhập tiêu đề" />
-                </div>
-
-                <div class="mt-4">
-                    <h3 class="text-sm">Nội dung</h3>
-                    <div class="mt-2">
-                        <Editor api-key="lfjyp1zowgxr0wayowsfvj10hjllwhpai8cyyzdip55ylql9" v-model="content" :init="{
-                            height: 300,
-                            menubar: false,
-                            plugins: 'lists link image code table',
-                            toolbar:
-                                'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code',
-                        }" />
+                <div class="row">
+                    <div class="col-8">
+                    <h3>Nested draggable</h3>
+                    <nested-draggable :tasks="list" />
                     </div>
+
+                    <MenuItem v-model="menus" :level="0" />
                 </div>
             </div>
         </el-col>
@@ -89,40 +79,62 @@
 import { ref } from 'vue'
 import { Search, EditPen, DeleteFilled, CirclePlus, Connection } from '@element-plus/icons-vue'
 import Breadcrumb from '@/views/backend/common/Breadcrumb.vue'
-
-const menus = ref([
-    {
-        id: 1,
-        title: 'Menu chính',
-        status: true,
-        author: 'Admin',
-        created_at: '2023-01-01',
-    },
-    {
-        id: 2,
-        title: 'Menu phụ',
-        status: false,
-        author: 'User',
-        created_at: '2023-01-02',
-    },
-    {
-        id: 3,
-        title: 'Menu footer',
-        status: true,
-        author: 'Admin',
-        created_at: '2023-01-03',
-    }
-])
-
+import MenuItem from '../components/MenuItem.vue'
+import draggable from 'vuedraggable'
 const value = ref('')
 const publish = ref('1')
 const drawer = ref(false)
 
+const menus = ref([
+  {
+    id: 1,
+    title: 'Trang chủ',
+    children: [
+      {
+        id: 2,
+        title: 'Giới thiệu',
+        children: [
+          {
+            id: 3,
+            title: 'Tầm nhìn',
+            children: []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 4,
+    title: 'Blog',
+    children: []
+  }
+])
 </script>
 
 <style scoped>
 :deep(.el-collapse-item__header){
     min-height: 40px!important;
     line-height: 40px!important;
+}
+
+.menu-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #ebeef5;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  background: #fff;
+  transition: 0.2s;
+}
+
+.menu-row:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.title {
+  flex: 1;
+  font-weight: 500;
 }
 </style>
