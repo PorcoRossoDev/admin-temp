@@ -62,12 +62,7 @@
 
                 <h1 class="font-bold capitalize pb-4 border-b border-gray-200">Cấu trúc menu</h1>
 
-                <div class="row">
-                    <div class="col-8">
-                    <h3>Nested draggable</h3>
-                    <nested-draggable :tasks="list" />
-                    </div>
-
+                <div class="mt-5">
                     <MenuItem v-model="menus" :level="0" />
                 </div>
             </div>
