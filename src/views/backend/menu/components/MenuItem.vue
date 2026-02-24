@@ -9,6 +9,7 @@
                         <el-icon class="drag-handle cursor-move">
                             <Rank />
                         </el-icon>
+                        <span class="hidden"><el-checkbox></el-checkbox></span>
                         <span>{{ element.title }}</span>
                     </div>
 
@@ -72,7 +73,7 @@
                             <img w-full :src="dialogImageUrl" alt="Preview Image" />
                         </el-dialog>
                     </div>
-                    <div class="mt-3">
+                    <div class="mt-1">
                         <el-checkbox v-model="checked1" label="Mở sang tab mới" size="" />
                     </div>
                     <div class="mt-1">
@@ -127,6 +128,14 @@ const toggleOpen = (id) => {
 </script>
 
 <style scoped>
+:deep(.el-upload-list--picture-card > *) {
+    width: 100px!important;
+    height: 100px!important;
+}
+/* :deep(.el-upload-size) {
+    width: 80px;
+    height: 80px;
+} */
 /* .menu-item {
     border: 1px solid #ebeef5;
     border-radius: 10px;

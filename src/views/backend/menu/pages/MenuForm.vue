@@ -24,7 +24,8 @@
                             <el-checkbox>5 bước đơn giản để tăng tốc độ website</el-checkbox>
                             <el-checkbox>Thiết kế UI/UX: 7 nguyên tắc quan trọng cần nhớ</el-checkbox>
                         </div>
-                        <div class="flex justify-end">
+                        <div class="flex justify-between items-center mt-2">
+                            <el-checkbox class="!font-bold !text-black">Chọn toàn bộ</el-checkbox>
                             <el-button type="primary" size="small" class="mt-2">Thêm vào menu</el-button>
                         </div>
                     </el-collapse-item>
@@ -50,7 +51,8 @@
                             <el-checkbox>5 bước đơn giản để tăng tốc độ website</el-checkbox>
                             <el-checkbox>Thiết kế UI/UX: 7 nguyên tắc quan trọng cần nhớ</el-checkbox>
                         </div>
-                        <div class="flex justify-end">
+                        <div class="flex justify-between items-center mt-2">
+                            <el-checkbox class="!font-bold !text-black">Chọn toàn bộ</el-checkbox>
                             <el-button type="primary" size="small" class="mt-2">Thêm vào menu</el-button>
                         </div>
                     </el-collapse-item>
@@ -59,11 +61,22 @@
         </el-col>
         <el-col :span="16">
             <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
+                <h1 class="font-bold capitalize pb-4 border-b border-gray-200">
+                    <span class="">Cấu trúc menu:</span>
+                    <span class="font-medium ml-2">Menu Header</span>
+                </h1>
 
-                <h1 class="font-bold capitalize pb-4 border-b border-gray-200">Cấu trúc menu</h1>
-
-                <div class="mt-5">
+                <div class="mt-3">
+                    <el-checkbox class="!font-bold !text-black">Chọn toàn bộ</el-checkbox>
+                </div>
+                
+                <!-- Danh sách menu kéo thả -->
+                <div class="mt-3">
                     <MenuItem v-model="menus" :level="0" />
+                </div>
+                <div class="flex justify-end">
+                    <el-button type="primary" size="" class="mt-2">Cập nhật</el-button>
+                    <el-button type="info" size="" class="mt-2">Huỷ</el-button>
                 </div>
             </div>
         </el-col>

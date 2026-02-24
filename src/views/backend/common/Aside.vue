@@ -139,7 +139,7 @@
               <span class="!px-4" v-show="!isCollapse">Setting</span>
             </template>
 
-            <el-menu-item class="!h-10 !px-[15px]" index="13">
+            <el-menu-item :route="{ name: 'admin.setting' }" class="!h-10 !px-[15px]" index="13">
               <el-icon><Setting /></el-icon>
               <span v-show="!isCollapse">Cấu hình</span>
             </el-menu-item>

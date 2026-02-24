@@ -136,6 +136,11 @@ export default [
                 name: 'admin.menu_edit',
                 component: () => import('@/views/backend/menu/pages/MenuForm.vue'),
             },
+            {
+                path: 'setting',
+                name: 'admin.setting',
+                component: () => import('@/views/backend/setting/pages/SettingList.vue'),
+            },
         ]
     }
 ]
