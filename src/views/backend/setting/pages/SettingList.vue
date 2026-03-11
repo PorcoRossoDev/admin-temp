@@ -183,10 +183,10 @@
 
         <div id="section6" class="bg-white rounded-xl mb-10 p-6">
           <h2 class="text-xl font-bold mb-4">Thông tin thanh toán</h2>
-          <el-tabs>
+          <el-tabs class="payment-tabs">
             <el-tab-pane>
               <template #label>
-                <span class="custom-tabs-label">
+                <span class="payment-tabs-label">
                   <el-icon>
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" color="currentColor" viewBox="0 0 24 24" class="svg-icon undefined text-3xl" data-component-name="Icon-Huge" data-name="Huge--CreditCard"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 12c0-3.537 0-5.306 1.053-6.487q.253-.284.554-.522C4.862 4 6.741 4 10.5 4h3c3.759 0 5.638 0 6.892.99q.302.24.555.523C22 6.693 22 8.463 22 12s0 5.306-1.053 6.487a4.4 4.4 0 0 1-.555.522C19.138 20 17.26 20 13.5 20h-3c-3.759 0-5.638 0-6.893-.99a4.4 4.4 0 0 1-.554-.523C2 17.307 2 15.537 2 12"></path><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M10 16h1.5M14.5 16H18"></path><path stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" d="M2 9h20"></path></svg>
                   </el-icon>
@@ -194,22 +194,47 @@
                 </span>
               </template>
               <el-row :gutter="20">
-                <el-col :span="16">
-                  <el-input id="input2" placeholder="" class="custom-input" />
+                <el-col :span="16" class="mb-4">
+                  <el-input id="input2" placeholder="Tên thẻ" class="custom-input" />
                 </el-col>
-                <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
+                <el-col :span="8" class="mb-4">
+                  <el-input id="input3" placeholder="Client ID" class="custom-input" />
+                </el-col>
+                <el-col :span="16" class="mb-4">
+                  <el-input id="input2" placeholder="API Key" class="custom-input" />
+                </el-col>
+                <el-col :span="8" class="mb-4">
+                  <el-input id="input3" placeholder="Secret Key" class="custom-input" />
+                </el-col>
               </el-row>
+              <el-switch v-model="value2" size="small" class="" inline-prompt :active-icon="Check"
+                :inactive-icon="Close" /> <span  class="text-sm">Hiển thị</span>
             </el-tab-pane>
             <el-tab-pane>
               <template #label>
-                <span class="custom-tabs-label">
+                <span class="payment-tabs-label">
                   <el-icon>
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" color="currentColor" viewBox="0 0 24 24" class="svg-icon undefined text-3xl" data-component-name="Icon-Huge" data-name="Huge--Paypal"><path stroke="currentColor" stroke-width="1.5" d="M6.294 4.835 4.165 17.671c-.18 1.081-.269 1.622.03 1.975.297.354.842.354 1.933.354h.402c.823 0 1.234 0 1.515-.244.28-.245.339-.654.455-1.473l.468-3.29c.037-.26.055-.39.084-.501a1.99 1.99 0 0 1 1.697-1.479c.113-.013.244-.013.505-.013h1.162a6.636 6.636 0 0 0 6.464-5.186C19.554 4.836 17.302 2 14.263 2h-4.64c-1.114 0-1.67 0-2.11.235-.25.134-.47.32-.642.547-.303.397-.394.949-.577 2.053Z"></path><path stroke="currentColor" stroke-width="1.5" d="m8.243 19.5-.228 1.332c-.105.61.37 1.168.996 1.168h1.99c.495 0 .917-.354.998-.836l.73-4.329c.08-.482.503-.835.997-.835h1.803c2.581 0 4.816-1.773 5.376-4.265C21.297 9.99 20.444 8.31 19 7.5"></path></svg>
                   </el-icon>
                   <span>Paypal</span>
                 </span>
               </template>
-              Route
+              <el-row :gutter="20">
+                <el-col :span="16" class="mb-4">
+                  <el-input id="input2" placeholder="Tên thẻ" class="custom-input" />
+                </el-col>
+                <el-col :span="8" class="mb-4">
+                  <el-input id="input3" placeholder="Client ID" class="custom-input" />
+                </el-col>
+                <el-col :span="16" class="mb-4">
+                  <el-input id="input2" placeholder="API Key" class="custom-input" />
+                </el-col>
+                <el-col :span="8" class="mb-4">
+                  <el-input id="input3" placeholder="Secret Key" class="custom-input" />
+                </el-col>
+              </el-row>
+              <el-switch v-model="value2" size="small" class="" inline-prompt :active-icon="Check"
+                :inactive-icon="Close" /> <span  class="text-sm">Hiển thị</span>
             </el-tab-pane>
           </el-tabs>
           <div class="mt-4">
@@ -296,5 +321,33 @@ onMounted(() => {
 
 :deep(.el-anchor__list) {
     padding-block: 8px;
+}
+
+/* Tab payments */
+:deep(.payment-tabs-label) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+:deep(.custom-tabs-label) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+:deep(.payment-tabs .el-tabs__active-bar) {
+    display: none;
+}
+
+:deep(.payment-tabs .el-tabs__nav-wrap:after) {
+    display: none;
+}
+
+:deep(.payment-tabs .el-tabs__item) {
+    border: 1px solid;
+    padding-inline: 20px!important;
+    margin-right: 15px;
+    border-radius: 25px;
+    height: 35px;
 }
 </style>
