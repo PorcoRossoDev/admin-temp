@@ -81,6 +81,17 @@
               <el-menu-item index="5-1" :route="{ name: 'admin.article' }"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh sách bài viết</el-menu-item>
               <el-menu-item index="5-2" :route="{ name: 'admin.category_article' }"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh mục bài viết</el-menu-item>
             </el-sub-menu>
+            
+            <el-sub-menu index="101">
+              <template #title>
+                <el-icon>
+                  <ShoppingCartFull />
+                </el-icon>
+                <span v-show="!isCollapse">Đơn hàng</span>
+              </template>
+              <el-menu-item index="101-1" :route="{ name: 'admin.order' }"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh sách đơn hàng</el-menu-item>
+              <el-menu-item index="101-2" :route="{ name: 'admin.category_order' }"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh mục đơn hàng</el-menu-item>
+            </el-sub-menu>
 
             <el-sub-menu index="6">
               <template #title>
@@ -165,8 +176,9 @@
 <script setup>
 import { ref } from 'vue'
 import { Monitor, Document, Goods, Expand, Fold, House, ArrowRight, Memo, Cpu, Message,
-  VideoPlay, ChatDotRound, CollectionTag, Connection, Setting, Operation, User, Coin
- } from '@element-plus/icons-vue'
+  VideoPlay, ChatDotRound, CollectionTag, Connection, Setting, Operation, User, Coin,
+  ShoppingCartFull
+} from '@element-plus/icons-vue'
 
 const isCollapse = ref(false)
 </script>

@@ -141,6 +141,11 @@ export default [
                 name: 'admin.setting',
                 component: () => import('@/views/backend/setting/pages/SettingList.vue'),
             },
+            {
+                path: 'order',
+                name: 'admin.order',
+                component: () => import('@/views/backend/order/pages/OrderList.vue'),
+            },
         ]
     }
 ]

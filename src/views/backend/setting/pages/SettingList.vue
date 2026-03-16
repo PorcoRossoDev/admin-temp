@@ -3,21 +3,59 @@
 
 
   <el-row :gutter="20">
-    <el-col :span="4">
+    <el-col :span="6">
       <!-- Anchor menu -->
-      <el-anchor :offset="70" container=".el-main" v-model="activeLink" default-active="#section1"
-        class="!sticky top-20" @change="scrollToSection">
-        <el-anchor-link href="#section1" title="Cấu hình chung" />
-        <el-anchor-link href="#section2" title="Thông tin liên hệ" />
-        <el-anchor-link href="#section3" title="Mạng xã hội" />
-        <el-anchor-link href="#section4" title="Cấu hình website" />
-        <el-anchor-link href="#section5" title="Thông tin Script" />
-        <el-anchor-link href="#section6" title="Thông tin gửi email" />
-        <el-anchor-link href="#section7" title="Thông tin thanh toán" />
+      <el-anchor
+        :offset="70"
+        container=".el-main"
+        v-model="activeLink"
+        default-active="#section1"
+        class="!sticky top-20"
+        @change="scrollToSection"
+      >
+        <el-anchor-link href="#section1">
+          <div class="flex items-start gap-2 py-1">
+            <el-icon class="text-blue-500 mt-1">
+              <Setting />
+            </el-icon>
+
+            <div>
+              <div class="text-sm font-semibold">Cấu hình chung</div>
+              <div class="text-xs text-gray-400">Thiết lập cơ bản cho website</div>
+            </div>
+          </div>
+        </el-anchor-link>
+
+        <el-anchor-link href="#section2">
+          <div class="flex items-start gap-2 py-1">
+            <el-icon class="text-green-500 mt-1">
+              <Phone />
+            </el-icon>
+
+            <div>
+              <div class="text-sm font-semibold">Thông tin liên hệ</div>
+              <div class="text-xs text-gray-400">Email, điện thoại, địa chỉ</div>
+            </div>
+          </div>
+        </el-anchor-link>
+
+        <el-anchor-link href="#section3">
+          <div class="flex items-start gap-2 py-1">
+            <el-icon class="text-pink-500 mt-1">
+              <Share />
+            </el-icon>
+
+            <div>
+              <div class="text-sm font-semibold">Mạng xã hội</div>
+              <div class="text-xs text-gray-400">Facebook, Youtube, Tiktok</div>
+            </div>
+          </div>
+        </el-anchor-link>
+
       </el-anchor>
     </el-col>
 
-    <el-col :span="18">
+    <el-col :span="16">
       <div class="scroll-container">
         <div id="section1" class="mb-10 p-6 bg-white rounded-xl">
           <h2 class="text-xl font-bold mb-4">Cấu hình chung</h2>
@@ -253,7 +291,7 @@
 <script setup>
 import { ref } from 'vue'
 import Breadcrumb from '@/views/backend/common/Breadcrumb.vue'
-import { Tools, Right, Location, Apple, ArrowRight, Promotion, EditPen } from '@element-plus/icons-vue'
+import { Tools, Right, Location, Apple, ArrowRight, Promotion, EditPen, Setting, Phone, Share } from '@element-plus/icons-vue'
 
 import { computed, onMounted } from 'vue'
 // Sử dụng ref để kiểm soát trạng thái active
