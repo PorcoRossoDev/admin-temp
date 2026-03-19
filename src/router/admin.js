@@ -146,6 +146,11 @@ export default [
                 name: 'admin.order',
                 component: () => import('@/views/backend/order/pages/OrderList.vue'),
             },
+            {
+                path: 'order/edit',
+                name: 'admin.order_edit',
+                component: () => import('@/views/backend/order/components/OrderForm.vue'),
+            },
         ]
     }
 ]

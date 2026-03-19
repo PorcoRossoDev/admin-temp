@@ -14,8 +14,8 @@
         @change="scrollToSection"
       >
         <el-anchor-link href="#section1">
-          <div class="flex items-start gap-2 py-1">
-            <el-icon class="text-blue-500 mt-1">
+          <div class="flex items-start gap-x-3 py-1">
+            <el-icon :size="16" class="text-blue-500 mt-1">
               <Setting />
             </el-icon>
 
@@ -27,8 +27,8 @@
         </el-anchor-link>
 
         <el-anchor-link href="#section2">
-          <div class="flex items-start gap-2 py-1">
-            <el-icon class="text-green-500 mt-1">
+          <div class="flex items-start gap-x-3 py-1">
+            <el-icon :size="16" class="text-green-500 mt-1">
               <Phone />
             </el-icon>
 
@@ -40,13 +40,65 @@
         </el-anchor-link>
 
         <el-anchor-link href="#section3">
-          <div class="flex items-start gap-2 py-1">
-            <el-icon class="text-pink-500 mt-1">
+          <div class="flex items-start gap-x-3 py-1">
+            <el-icon :size="16" class="text-pink-500 mt-1">
               <Share />
             </el-icon>
 
             <div>
               <div class="text-sm font-semibold">Mạng xã hội</div>
+              <div class="text-xs text-gray-400">Facebook, Youtube, Tiktok</div>
+            </div>
+          </div>
+        </el-anchor-link>
+        
+        <el-anchor-link href="#section4">
+          <div class="flex items-start gap-x-3 py-1">
+            <el-icon :size="16" class="text-pink-500 mt-1">
+              <SetUp />
+            </el-icon>
+
+            <div>
+              <div class="text-sm font-semibold">Cấu hình website</div>
+              <div class="text-xs text-gray-400">Facebook, Youtube, Tiktok</div>
+            </div>
+          </div>
+        </el-anchor-link>
+        
+        <el-anchor-link href="#section5">
+          <div class="flex items-start gap-x-3 py-1">
+            <el-icon :size="16" class="text-pink-500 mt-1">
+              <CopyDocument />
+            </el-icon>
+
+            <div>
+              <div class="text-sm font-semibold">Thông tin Script</div>
+              <div class="text-xs text-gray-400">Facebook, Youtube, Tiktok</div>
+            </div>
+          </div>
+        </el-anchor-link>
+        
+        <el-anchor-link href="#section6">
+          <div class="flex items-start gap-x-3 py-1">
+            <el-icon :size="16" class="text-pink-500 mt-1">
+              <ChatSquare />
+            </el-icon>
+
+            <div>
+              <div class="text-sm font-semibold">Thông tin gửi Email</div>
+              <div class="text-xs text-gray-400">Facebook, Youtube, Tiktok</div>
+            </div>
+          </div>
+        </el-anchor-link>
+        
+        <el-anchor-link href="#section7">
+          <div class="flex items-start gap-x-3 py-1">
+            <el-icon :size="16" class="text-pink-500 mt-1">
+              <CreditCard />
+            </el-icon>
+
+            <div>
+              <div class="text-sm font-semibold">Thông tin Thanh toán</div>
               <div class="text-xs text-gray-400">Facebook, Youtube, Tiktok</div>
             </div>
           </div>
@@ -219,7 +271,7 @@
           </div>
         </div>
 
-        <div id="section6" class="bg-white rounded-xl mb-10 p-6">
+        <div id="section7" class="bg-white rounded-xl mb-10 p-6">
           <h2 class="text-xl font-bold mb-4">Thông tin thanh toán</h2>
           <el-tabs class="payment-tabs">
             <el-tab-pane>
@@ -291,7 +343,9 @@
 <script setup>
 import { ref } from 'vue'
 import Breadcrumb from '@/views/backend/common/Breadcrumb.vue'
-import { Tools, Right, Location, Apple, ArrowRight, Promotion, EditPen, Setting, Phone, Share } from '@element-plus/icons-vue'
+import { Tools, Right, Location, Apple, ArrowRight, Promotion, EditPen, Setting, Phone, Share,
+  InfoFilled, SetUp, CopyDocument, Check, Close, ChatSquare, CreditCard
+ } from '@element-plus/icons-vue'
 
 import { computed, onMounted } from 'vue'
 // Sử dụng ref để kiểm soát trạng thái active

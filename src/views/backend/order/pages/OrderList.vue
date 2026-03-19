@@ -116,7 +116,7 @@
             <!-- Action -->
             <el-table-column label="#" width="100" class-name="text-black font-medium">
                 <template #default="scope">
-                    <el-button type="primary" circle size="small">
+                    <el-button @click="$router.push({ name: 'admin.order_edit', params: { id: scope.row.id } })" type="primary" circle size="small">
                         <el-icon class="cursor-pointer">
                             <EditPen />
                         </el-icon>
