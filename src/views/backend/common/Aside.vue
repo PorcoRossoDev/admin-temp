@@ -26,7 +26,7 @@
             <template #title>
               <span class="!px-4" v-show="!isCollapse">Menu</span>
             </template>
-            <el-menu-item class="!h-10 !px-[15px]" :route="{ name: 'admin.dashboard' }" index="1">
+            <el-menu-item class="!h-10 !px-[10px]" :route="{ name: 'admin.dashboard' }" index="1">
               <el-icon>
                 <House />
               </el-icon>
@@ -122,22 +122,22 @@
               <el-menu-item index="8-2" :route="{name: 'admin.category_gallery'}"><el-icon class="!w-3"><ArrowRight /></el-icon>Danh mục media</el-menu-item>
             </el-sub-menu>
 
-            <el-menu-item :route="{name: 'admin.contact'}" class="!h-10 !px-[15px]" index="9">
+            <el-menu-item :route="{name: 'admin.contact'}" class="!h-10 !px-[10px]" index="9">
               <el-icon><Message /></el-icon>
               <span v-show="!isCollapse">Liên hệ</span>
             </el-menu-item>
 
-            <el-menu-item :route="{ name: 'admin.comment' }" class="!h-10 !px-[15px]" index="10">
+            <el-menu-item :route="{ name: 'admin.comment' }" class="!h-10 !px-[10px]" index="10">
               <el-icon><ChatDotRound /></el-icon>
               <span v-show="!isCollapse">Bình luận</span>
             </el-menu-item>
             
-            <el-menu-item :route="{ name: 'admin.tag' }" class="!h-10 !px-[15px]" index="11">
+            <el-menu-item :route="{ name: 'admin.tag' }" class="!h-10 !px-[10px]" index="11">
               <el-icon><CollectionTag /></el-icon>
               <span v-show="!isCollapse">Tags</span>
             </el-menu-item>
 
-            <el-menu-item :route="{ name: 'admin.menu' }" class="!h-10 !px-[15px]" index="12">
+            <el-menu-item :route="{ name: 'admin.menu' }" class="!h-10 !px-[10px]" index="12">
               <el-icon><Connection /></el-icon>
               <span v-show="!isCollapse">Menu</span>
             </el-menu-item>
@@ -150,12 +150,12 @@
               <span class="!px-4" v-show="!isCollapse">Setting</span>
             </template>
 
-            <el-menu-item :route="{ name: 'admin.setting' }" class="!h-10 !px-[15px]" index="13">
+            <el-menu-item :route="{ name: 'admin.setting' }" class="!h-10 !px-[10px]" index="13">
               <el-icon><Setting /></el-icon>
               <span v-show="!isCollapse">Cấu hình</span>
             </el-menu-item>
 
-            <el-menu-item class="!h-10 !px-[15px]" index="14">
+            <el-menu-item class="!h-10 !px-[10px]" index="14">
               <el-icon><Operation /></el-icon>
               <span v-show="!isCollapse">Cập nhật sitemap</span>
             </el-menu-item>
@@ -206,17 +206,17 @@ const isCollapse = ref(false)
   border-radius: 8px;
 }
 :deep(.el-sub-menu .el-menu-item) {
-  padding-left: 15px!important;
+  padding-left: 10px!important;
   height: 45px;
 }
 :deep(.menu__title) {
-    padding-inline: 15px ! Important;
+    padding-inline: 10px ! Important;
     border-radius: 8px;
     height: 45x;
     margin-bottom: 5px;
 }
 :deep(.el-sub-menu__title) {
-  padding-inline: 15px!important;
+  padding-inline: 10px!important;
   height: 45px;
   border-radius: 8px;
 }
@@ -235,5 +235,9 @@ const isCollapse = ref(false)
   padding-inline: 0!important;
   justify-content: center;
   margin-right: 0;
+}
+:deep(.el-menu-item.is-active) {
+  background-color: #e6f7ff !important; /* Màu nền bạn muốn */
+  color: #409EFF; /* Màu chữ khi active */
 }
 </style>

@@ -61,7 +61,15 @@ const chartOptions = ref({
   legend: { position: 'bottom' },
   grid: { borderColor: '#eee' },
   tooltip: { theme: 'light' },
-  
 })
 // End: Biểu đồ
 </script>
+
+<style scoped>
+:deep(.el-select__selected-item span) {
+    font-size: 12px;
+}
+:deep(.el-select-dropdown__item span) {
+    font-size: 12px!important;
+}
+</style>
