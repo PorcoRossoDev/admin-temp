@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+/* 👇 đặt ở đây */
+/* :root {
+  --el-fill-color-blank: #635BFF;
+  --el-input-bg-color: #635BFF;
+  --el-text-color-regular: #ffffff;
+} */
+
+.el-cus-input .el-input__wrapper {
+    border-radius: 10px;
+}

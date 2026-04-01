@@ -12,8 +12,8 @@
 
                 <!-- Tiêu đề -->
                 <div class="mt-4">
-                    <h3 class="text-sm"><span class="text-red-600 mr-1">*</span>Tiêu đề</h3>
-                    <el-input v-model="input1" size="large" class="w-full mt-2 !text-xs" placeholder="Nhập tiêu đề" />
+                    <h3 class="text-sm font-semibold"><span class="text-red-600 mr-1">*</span>Tiêu đề</h3>
+                    <el-input v-model="input1" size="large" class="w-full mt-2 el-cus-input" placeholder="Nhập tiêu đề" />
                 </div>
 
                 <div class="mt-4">

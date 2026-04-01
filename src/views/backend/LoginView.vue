@@ -39,7 +39,7 @@ const handleSubmit = () => {
                 <!-- <AuthLogo /> -->
 
                 <div class="mb-10 mt-3">
-                    <h1 class="font-bold text-3xl">Welcome back!</h1>
+                    <h1 class="font-bold text-3xl text-primary">Welcome back!</h1>
                     <p class="font-medium mt-2">Please enter your credentials to sign in!</p>
                 </div>
 
@@ -47,12 +47,12 @@ const handleSubmit = () => {
                 <el-form :model="form" @submit.prevent="handleSubmit" class="space-y-2">
                     <el-form-item>
                         <div class="font-medium">Email</div>
-                        <el-input v-model="form.email" placeholder="Email" size="large" type="email" clearable />
+                        <el-input v-model="form.email" placeholder="Email" size="large" type="email" class="el-cus-input" clearable />
                     </el-form-item>
 
                     <el-form-item>
                         <div class="font-medium">Mật khẩu</div>
-                        <el-input v-model="form.password" placeholder="Password" size="large" type="password"
+                        <el-input v-model="form.password" placeholder="Password" size="large" class="el-cus-input" type="password"
                             show-password />
                     </el-form-item>
 

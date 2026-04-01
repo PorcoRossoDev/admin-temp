@@ -43,7 +43,7 @@
              </div>
 
             <!-- Thêm mới -->
-            <el-button @click="$router.push({ name: 'admin.add_user' })" type="primary" :dark="isDark" class="flex gap-x-3">
+            <el-button @click="$router.push({ name: 'admin.add_user' })" type="primary" :dark="isDark" class="flex gap-x-3 bg-primary">
                 <span class="mr-1">
                     <el-icon :size="16"><CirclePlus /></el-icon>
                 </span>  
