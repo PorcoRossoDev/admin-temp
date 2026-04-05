@@ -36,12 +36,13 @@
       </el-button>
 
       <el-button type="primary" @click="generateVariations">
+        <el-icon class="mr-1"><CirclePlus /></el-icon>
         Tạo biến thể
       </el-button>
     </div>
 
     <!-- Accordion hiển thị biến thể -->
-    <el-collapse v-model="activeNames" accordion>
+    <el-collapse v-model="activeNames">
       <el-collapse-item
         v-for="v in variations"
         :key="v.sku"
@@ -133,7 +134,10 @@ const attributesActive = ref([]);
 
 // Nút add/remove
 const addAttribute = () => attributesActive.value.push({ id:null, attr:[] });
-const removeAttribute = (index) => attributesActive.value.splice(index,1);
+const removeAttribute = (index) => {
+  attributesActive.value.splice(index, 1);
+  generateVariations();
+};
 
 // Các id đã chọn để disable option
 const selectedIds = computed(() => attributesActive.value.map(a=>a.id).filter(id=>id!==null));
@@ -188,6 +192,9 @@ function generateVariations() {
   build(0, []);
   variations.value = newVariations;
   activeNames.value = variations.value.map(v => v.sku);
+
+  console.log(variations.value);
+
 }
 
 // Khởi tạo lần đầu

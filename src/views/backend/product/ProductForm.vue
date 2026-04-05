@@ -72,8 +72,8 @@
             </div>
 
             <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
-                <!-- <VariationDynamicMain /> -->
-                <Variation/>
+                <VariationDynamicMain />
+                <!-- <Variation/> -->
             </div>
         </el-col>
         <el-col :span="8">

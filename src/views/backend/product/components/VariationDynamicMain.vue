@@ -1,12 +1,11 @@
 <template>
   <div>
-    <h2 class="font-bold mb-2">Thuộc tính</h2>
+    <h2 class="font-bold mb-2 text-lg">Thuộc tính</h2>
+
+    <pre>{{ variations }}</pre>
 
     <!-- Danh sách thuộc tính -->
-    <div 
-    v-for="(attr, i) in attributesActive" 
-    :key="i"
-    class="mb-2 flex items-center gap-2">
+    <div v-for="(attr, i) in attributesActive" :key="i" class="mb-2 flex items-center gap-2">
       <el-select v-model="attr.id" placeholder="Tên thuộc tính" class="!w-1/4">
         <el-option
           v-for="item in attributes"
@@ -31,222 +30,193 @@
       </el-button>
     </div>
 
-    <div><pre class="p-3 bg-gray-200">{{ variations }}</pre></div>
-
-    <div>
+    <!-- Nút thêm thuộc tính và tạo biến thể -->
+    <div class="flex mb-4 mt-3">
       <el-button type="success" @click="addAttribute">
         <el-icon class="mr-1"><CirclePlus /></el-icon>
         Thêm thuộc tính
       </el-button>
 
-      <el-button type="primary" class="ml-2" @click="generateVariations">
+      <el-button type="primary" @click="generateVariations">
+        <el-icon class="mr-1"><CirclePlus /></el-icon>
         Tạo biến thể
       </el-button>
     </div>
 
-    <!-- Danh sách biến thể -->
-    <!-- Accordion cho từng biến thể -->
+    <!-- Accordion hiển thị biến thể -->
     <el-collapse v-model="activeNames">
       <el-collapse-item
-        v-for="(v, i) in variations"
+        v-for="v in variations"
         :key="v.sku"
         :name="v.sku"
       >
         <template #title>
           <div class="flex justify-between w-full">
-            <div>
-              {{ v.attributes.map(a => a.value_name).join(" / ") }}
-            </div>
+            <div class="font-bold"><span class="">{{ v.attributes.map(a => a.value_name).join(' / ') }}</span></div>
             <div>SKU: {{ v.sku }}</div>
           </div>
         </template>
 
-        <!-- Form chi tiết của từng biến thể -->
-        <div class="p-3 space-y-3 bg-gray-50 rounded">
-          <el-input
-            v-model="v.sku"
-            placeholder="SKU"
-            class="!w-1/2"
-          />
+        <div class="p-3 bg-gray-50 rounded">
 
-          <el-input-number
-            v-model="v.price"
-            placeholder="Giá"
-            :min="0"
-            class="!w-1/3"
-          />
+          <div>
+            <!-- Hình ảnh -->
+            <el-upload
+              v-model:file-list="v.images"
+              class="!w-auto"
+              :limit="1"
+            >
+              <el-button size="small" class="!w-auto">Upload</el-button>
+            </el-upload>
+          </div>
 
-          <el-input-number
-            v-model="v.stock"
-            placeholder="Kho"
-            :min="0"
-            class="!w-1/3"
-          />
+          <div class="grid grid-cols-3 gap-x-3">
+            <!-- SKU -->
+            <div class="">
+              <h3 class="text-xs font-bold">Mã sản phẩm:</h3>
+              <el-input v-model="v.sku" placeholder="SKU" class="mt-2"/>
+            </div>
+            
+            <!-- Price -->
+            <div class="">
+              <h3 class="text-xs font-bold">Giá</h3>
+              <el-input-number v-model="v.price" :min="0" :controls="false" placeholder="Giá" class="mt-2 !w-full"/>
+            </div>
 
-          <el-input
-            v-model="v.note"
-            type="textarea"
-            placeholder="Ghi chú"
-          />
+            <div class="">
+              <h3 class="text-xs font-bold">Giá khuyến mãi</h3>
+              <el-input-number v-model="v.price" :min="0" :controls="false" placeholder="Giá" class="mt-2 !w-full"/>
+            </div>
+          </div>
+
+          <div>
+            <div class="mt-4">
+                <!-- Note -->
+                <h3 class="text-xs font-bold">Mô tả</h3>
+                <el-input v-model="v.note" type="textarea" placeholder="Ghi chú" class="mt-2 !w-full !text-xs"/>
+            </div>
+            <div>
+                <el-switch
+                v-model="v.isStock"
+                active-text="Quản lý kho hàng"
+                size="small"
+                class="!mt-3"
+              />
+              <div 
+              class="border border-gray-200 p-3 rounded-xl mt-3"
+              v-if="v.isStock == true"
+              >
+                <div class="">
+                  <h3 class="text-xs font-bold">Số lượng kho:</h3>
+                  <el-input-number v-model="v.price" :min="0" :controls="false" placeholder="Số lượng kho" class="mt-2 !w-full"/>
+                </div>
+              </div>
+            </div>
+            
+          </div>
         </div>
       </el-collapse-item>
     </el-collapse>
-
-    <!-- Nút tạo lại biến thể -->
-    <div class="mt-4 flex gap-2">
-      <el-button type="success" @click="generateVariations">
-        Tạo lại biến thể
-      </el-button>
-    </div>
-
   </div>
 </template>
 
 <script setup>
-import { ref, watch, computed } from "vue";
+import { ref, computed } from "vue";
 import { DeleteFilled, CirclePlus } from "@element-plus/icons-vue";
-
-
-// ================================
-// THÊM ATTRIBUTE:
-// 1. Chọn thuộc tính từ danh sách (select)
-// 2. Chọn giá trị từ danh sách (select multiple)
-// 3. Xóa thuộc tính
-// ================================
 
 // Danh sách thuộc tính
 const attributes = ref([
-  {
-    id: 1,
-    title: "Color",
-    attr: [
-      {
-        id: 1,
-        title: "Red",
-      },
-      {
-        id: 2,
-        title: "Blue",
-      },
-      {
-        id: 3,
-        title: "Green",
-      }
-    ],
-  },
-  {
-    id: 2,
-    title: "Size",
-    attr: [
-      {
-        id: 4,
-        title: "S",
-      },
-      {
-        id: 5,
-        title: "M",
-      },
-      {
-        id: 6,
-        title: "L",
-      }
-    ]
-  },
-  {
-    id: 3,
-    title: "Material",
-    attr: [
-      {
-        id: 7,
-        title: "Cotton",
-      },
-      {
-        id: 8,
-        title: "Silk",
-      }
-    ]
-  }
+  { id: 1, title: "Color", attr: [ { id: 1, title:"Red" }, { id: 2, title:"Blue" }, { id: 3, title:"Green" } ] },
+  { id: 2, title: "Size", attr: [ { id: 4, title:"S" }, { id: 5, title:"M" }, { id: 6, title:"L" } ] },
+  { id: 3, title: "Material", attr: [ { id: 7, title:"Cotton" }, { id: 8, title:"Silk" } ] },
 ]);
 
 // Thuộc tính đã chọn
 const attributesActive = ref([]);
 
-// Thêm thuộc tính
-const addAttribute = () => {
-  attributesActive.value.push({
-    id: null,
-    attr: [],
-  });
-}
-
-// Xóa thuộc tính
+// Nút add/remove
+const addAttribute = () => attributesActive.value.push({ id:null, attr:[] });
 const removeAttribute = (index) => {
   attributesActive.value.splice(index, 1);
-}
+  generateVariations();
+};
 
-const selectedIds = computed(() => {
-  return attributesActive.value
-    .map(item => item.id)
-    .filter(id => id !== null);
-});
+// Các id đã chọn để disable option
+const selectedIds = computed(() => attributesActive.value.map(a=>a.id).filter(id=>id!==null));
 
-// ================================
-// Tạo VARIATIONS: Từ thuộc tính đã chọn
-// ================================
+// Variations
 const variations = ref([]);
+const activeNames = ref([]);
 
+// Generate variations chuẩn, giữ dữ liệu cũ
 function generateVariations() {
-  const attrList = attributesActive.value; // [{id, slug, name, attr: [{id,name,slug}]}]
-  const newVariations = [];
+  // Chỉ lấy những thuộc tính thực sự có ID và có giá trị được chọn
+  const activeAttrs = attributesActive.value.filter(
+    a => a.id !== null && Array.isArray(a.attr) && a.attr.length > 0
+  );
 
-  // Lưu map dữ liệu cũ theo SKU
+  // Nếu không có thuộc tính hợp lệ thì không tạo biến thể, xóa danh sách hiện tại
+  if (activeAttrs.length === 0) {
+    variations.value = [];
+    activeNames.value = [];
+    return;
+  }
+
   const oldMap = new Map();
   variations.value.forEach(v => oldMap.set(v.sku, v));
+  const newVariations = [];
 
   function build(index, currentAttrs) {
-    if (index >= attrList.length) {
-      // Tạo SKU từ value_slug theo thứ tự thuộc tính
-      const sku = currentAttrs.map(a => a.value_slug).join("-");
-
-      // Merge dữ liệu cũ nếu có
+    if (index >= activeAttrs.length) {
+      const sku = currentAttrs.map(a => a.value_id).join("-");
       const oldData = oldMap.get(sku);
 
       newVariations.push({
         sku,
         price: oldData?.price ?? 0,
         stock: oldData?.stock ?? 0,
+        isStock: oldData?.is_stock ?? false,
         note: oldData?.note ?? "",
+        images: oldData?.images ?? [],
         attributes: currentAttrs
       });
-
       return;
     }
 
-    const attrItem = attrList[index];
-    if (!attrItem.attr.length) return;
+    const attrItem = activeAttrs[index];
+    if (!attrItem.attr || !attrItem.attr.length) return;
 
-    attrItem.attr.forEach(value => {
-      // value = {id, name, slug}
+    attrItem.attr.forEach(valueId => {
+      // Lấy thông tin đầy đủ từ attributes gốc
+      const valueData = attributes.value
+        .find(a => a.id === attrItem.id)?.attr
+        .find(v => v.id === valueId) || { id: valueId, title: '' };
+
       const nextAttrs = [
         ...currentAttrs,
-        {
-          attribute_id: attrItem.id,
-          attribute_slug: attrItem.slug,
-          value_id: value.id,
-          value_slug: value.slug,
-          value_name: value.name
-        }
+        { attribute_id: attrItem.id, value_id: valueData.id, value_name: valueData.title }
       ];
+
       build(index + 1, nextAttrs);
     });
   }
 
   build(0, []);
   variations.value = newVariations;
+  activeNames.value = variations.value.map(v => v.sku);
+
+  console.log(variations.value);
 }
 
-// ================================
-// Hiển thị các biến thể theo thuộc tính đã chọn
-// ================================
-
+// Khởi tạo lần đầu
+// generateVariations();
 </script>
+
+<style scoped>
+.el-collapse-item__header {
+  font-weight: 600;
+}
+:deep(.el-input-number.is-center .el-input__inner ){
+  text-align: left !important;
+}
+</style>

@@ -39,7 +39,7 @@
                 <h2 class="font-bold">Xuất bản</h2>
                 <div class="mt-4">
                     <h3 class="text-xs"><span class="text-red-600 mr-1">*</span>Thời gian xuất bản</h3>
-                    <div class="mt-1">
+                    <div class="mt-2">
                         <el-date-picker class="!w-full !text-xs" v-model="value1" type="date"
                             placeholder="Chọn thời gian" size="default" />
                     </div>
@@ -47,8 +47,8 @@
 
                 <div class="mt-4">
                     <h3 class="text-xs"><span class="text-red-600 mr-1">*</span>Hiển thị</h3>
-                    <div class="mt-1">
-                        <el-radio v-for="item in optionsPublish" :key="item.id" :label="item.id"
+                    <div class="mt-2">
+                        <el-radio class="!h-auto" v-for="item in optionsPublish" :key="item.id" :label="item.id"
                             style="--el-radio-font-size: 12px">
                             {{ item.name }}
                         </el-radio>

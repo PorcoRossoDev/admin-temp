@@ -66,7 +66,7 @@
               <span class="!px-4" v-show="!isCollapse">App</span>
             </template>
 
-            <el-menu-item :route="{name: 'admin.page'}" class="!h-10 !px-[15px]" index="4">
+            <el-menu-item :route="{name: 'admin.page'}" class="!h-10 !px-[10px]" index="4">
               <el-icon><Memo /></el-icon>
               <span v-show="!isCollapse">Trang</span>
             </el-menu-item>
