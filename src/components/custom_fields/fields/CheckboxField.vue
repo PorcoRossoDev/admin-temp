@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ field.label }}</h3>
+    <h3>{{ label }}</h3>
     <el-checkbox v-model="localData" @change="updateValue">{{ label }}</el-checkbox>
   </div>
 </template>

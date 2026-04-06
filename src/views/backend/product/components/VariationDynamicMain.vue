@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h2 class="font-bold mb-2 text-lg">Thuộc tính</h2>
-
-    <pre>{{ variations }}</pre>
+    <h2 class="font-bold mb-2">Thuộc tính</h2>
 
     <!-- Danh sách thuộc tính -->
     <div v-for="(attr, i) in attributesActive" :key="i" class="mb-2 flex items-center gap-2">

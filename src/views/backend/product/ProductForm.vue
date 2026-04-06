@@ -13,7 +13,7 @@
                 <!-- Tiêu đề -->
                 <div class="mt-4">
                     <h3 class="text-xs"><span class="text-red-600 mr-1">*</span>Tiêu đề</h3>
-                    <el-input v-model="input1" size="large" class="w-full mt-2 !text-xs" placeholder="Nhập tiêu đề" />
+                    <el-input v-model="input1" size="large" class="w-full mt-2 !text-xs el-cus-input" placeholder="Nhập tiêu đề" />
                 </div>
 
                 <!-- Đường dẫn -->
@@ -27,7 +27,7 @@
                 <!-- Mã sản phẩm -->
                 <div class="mt-4">
                     <h3 class="text-xs"><span class="text-red-600 mr-1">*</span>Mã sản phẩm</h3>
-                    <el-input v-model="input1" size="large" class="w-full mt-2" placeholder="" />
+                    <el-input v-model="input1" size="large" class="w-full mt-2 el-cus-input" placeholder="" />
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
             </div>
 
             <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
-                 <!-- <CustomFields /> -->
+                 <CustomFields />
             </div>
 
             <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200 mt-6">
@@ -307,7 +307,7 @@ const handlePictureCardPreview = (uploadFile) => {
 }
 
 /* albums */
-:deep(.el-upload-list--picture-card > *) {
+/* :deep(.el-upload-list--picture-card > *) {
     width: calc(33.33% - 5px) !important;
     height: auto!important;
     margin-bottom:  5px !important;
@@ -320,5 +320,5 @@ const handlePictureCardPreview = (uploadFile) => {
 }
 :deep(.el-upload-list--picture-card > *:nth-child(3n)) {
     margin-inline: 0 !important;
-}
+} */
 </style>
