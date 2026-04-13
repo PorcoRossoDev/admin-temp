@@ -1,6 +1,6 @@
 <template>
   <div class="mt-3 bg-gray-50 p-3">
-    <h3>{{ field.label }}</h3>
+    <h3 class="text-md font-semibold">{{ field.label }}</h3>
 
     <FieldRenderer
       v-for="item in field.fields"

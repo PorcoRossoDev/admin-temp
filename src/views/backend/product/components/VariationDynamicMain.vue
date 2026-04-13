@@ -30,12 +30,12 @@
 
     <!-- Nút thêm thuộc tính và tạo biến thể -->
     <div class="flex mb-4 mt-3">
-      <el-button type="success" @click="addAttribute">
+      <el-button type="success" @click="addAttribute" class="!text-xs">
         <el-icon class="mr-1"><CirclePlus /></el-icon>
         Thêm thuộc tính
       </el-button>
 
-      <el-button type="primary" @click="generateVariations">
+      <el-button type="primary" @click="generateVariations" class="!text-xs">
         <el-icon class="mr-1"><CirclePlus /></el-icon>
         Tạo biến thể
       </el-button>

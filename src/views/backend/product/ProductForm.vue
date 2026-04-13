@@ -307,18 +307,11 @@ const handlePictureCardPreview = (uploadFile) => {
 }
 
 /* albums */
-/* :deep(.el-upload-list--picture-card > *) {
-    width: calc(33.33% - 5px) !important;
+ :deep(.el-upload-list--picture-card > *) {
+    width: auto!important;
+    margin: 0!important;
     height: auto!important;
-    margin-bottom:  5px !important;
 }
-:deep(.el-upload-list--picture-card .el-upload-list__item-thumbnail) {
-    object-fit: cover!important;
-}
-:deep(.el-upload-list--picture-card > *:not(:nth-child(3n))) {
-    margin-right: 5px !important;
-}
-:deep(.el-upload-list--picture-card > *:nth-child(3n)) {
-    margin-inline: 0 !important;
-} */
+
+ :deep(.el-upload-list--picture-card ) {display: grid;grid-template-columns: repeat(3, minmax(0, 1fr));gap: 15px;}
 </style>

@@ -9,7 +9,7 @@
       :show-file-list="false"
       :on-change="handleUpload"
     >
-      <el-button type="primary">Chọn ảnh</el-button>
+      <el-button type="primary" class="!text-xs">Chọn ảnh</el-button>
     </el-upload>
 
     <img v-if="localData" :src="localData" class="w-32 h-32 object-cover border rounded mt-3" />

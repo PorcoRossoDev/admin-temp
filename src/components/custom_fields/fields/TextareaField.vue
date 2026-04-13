@@ -6,6 +6,7 @@
       :rows="4" 
       v-model="localData" 
       @input="updateValue" 
+      class="!text-xs"
       placeholder="Nhập mô tả..." 
     />
   </div>

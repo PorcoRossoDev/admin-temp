@@ -1,7 +1,7 @@
 <template>
   <div>
     <label class="font-bold mb-1 block">{{ label }}</label>
-    <el-input v-model="localData" @input="updateValue" placeholder="Nhập nội dung..." />
+    <el-input v-model="localData" @input="updateValue" class="!text-xs" placeholder="Nhập nội dung..." />
   </div>
 </template>
 
