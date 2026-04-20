@@ -38,9 +38,9 @@ const handleSubmit = () => {
                 </div>
                 <!-- <AuthLogo /> -->
 
-                <div class="mb-10 mt-3">
-                    <h1 class="font-bold text-3xl text-primary">Welcome back!</h1>
-                    <p class="font-medium mt-2">Please enter your credentials to sign in!</p>
+                <div class="mb-10 mt-3 ">
+                    <h1 class="font-bold text-3xl">Đăng nhập!</h1>
+                    <p class="font-medium mt-2">Vui lòng nhập thông tin đăng nhập của bạn để đăng nhập!</p>
                 </div>
 
                 <!-- Form -->
@@ -84,7 +84,4 @@ const handleSubmit = () => {
 </template>
 
 <style scoped>
-.text-primary {
-    color: var(--el-color-primary);
-}
 </style>
