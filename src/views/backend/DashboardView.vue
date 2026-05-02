@@ -8,7 +8,7 @@
 
     <!-- Thông số -->
      <el-row :gutter="20" class="mt-5">
-      <el-col v-for="item in info" :span="6">
+      <el-col v-for="(item, index) in info" :span="6">
         <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200">
           <div class="flex gap-x-5">
             <span class="flex bg-[#e9ecef] w-12 h-12 justify-center items-center rounded-full"><el-icon><Sell /></el-icon></span>
@@ -22,7 +22,14 @@
               <span class="text-gray-500">Invoices Awaiting </span>
               <san>$5,569 <span>(56%)</span></san>
             </div>
-            <el-progress :percentage="50" :show-text="false" :stroke-width="3" :color="item.color" class="mt-2" />
+            <div>
+              <ApexChart type="bar" :options="chartOptions" :series="series" height="100" />
+              <div class="">
+                <span class="font-bold">$3,020</span>
+                <span class="">30.6%</span>
+              </div>
+            </div>
+            <!-- <el-progress :percentage="50" :show-text="false" :stroke-width="3" :color="item.color" class="mt-2" /> -->
           </div>
         </div>
       </el-col>
@@ -91,4 +98,84 @@ const info = ref([
   },
 ])
 // End: Thông số
+
+
+
+// Start: Biểu đồ
+const series = ref([
+  { name: 'Doanh thu', data: [44, 55, 41, 67, 22, 43, 50] }
+])
+
+const chartOptions = ref({
+  chart: {
+    id: 'bar',
+    toolbar: {
+      show: false
+    }
+  },
+
+  colors: ['#1e85ff'],
+
+  plotOptions: {
+    bar: {
+      borderRadius: 4,
+      borderRadiusApplication: 'end',
+      horizontal: false,
+      columnWidth: '40%' // 👈 đẹp hơn barHeight khi vertical
+    }
+  },
+
+  dataLabels: {
+    enabled: false
+  },
+
+  // 👇 TRỤC X
+  xaxis: {
+    categories: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'],
+    labels: {
+      show: false // ❌ ẩn text dưới
+    },
+    axisBorder: {
+      show: false
+    },
+    axisTicks: {
+      show: false
+    },
+    title: {
+      text: ''
+    }
+  },
+
+  // 👇 TRỤC Y
+  yaxis: {
+    show: false // 🔥 ẩn luôn cả trục (mạnh nhất)
+  },
+
+  legend: {
+    position: 'bottom'
+  },
+
+  grid: {
+    borderColor: '#eee',
+    xaxis: {
+      lines: {
+        show: false
+      }
+    },
+    yaxis: {
+      lines: {
+        show: false // ❌ tắt line ngang
+      }
+    }
+  },
+
+  tooltip: {
+    theme: 'light',
+    y: {
+      formatter: (val) => {
+        return val + ' đ' // 👈 format tiền (tuỳ bạn đổi)
+      }
+    }
+  }
+})
 </script>
