@@ -42,9 +42,9 @@
             </el-table-column>
             
             <!-- Hình ảnh -->
-            <el-table-column label="" width="100" class-name="text-black font-medium">
+            <el-table-column label="Hình ảnh" width="100" class-name="text-black font-medium text-center">
                 <template #default="scope">
-                    <div class="flex justify-center">
+                    <div class="flex">
                         <div class="border border-gray-200 w-[55px] h-[55px] rounded-md">
                             <el-image :src="scope.row.image" class="" />
                         </div>
@@ -55,7 +55,7 @@
             <!-- Sản phẩm -->
             <el-table-column label="Sản phẩm" width="200" class-name="text-black font-medium" show-overflow-tooltip>
                 <template #default="scope">
-                    <span class="font-normal text-blue-600">
+                    <span class="font-semibold">
                         {{ scope.row.product }}
                     </span>
                 </template>
@@ -154,16 +154,16 @@ const tableData = ref([
   { orderCode: 'DH009', product: 'Túi tote canvas', quantity: 1, price: 120000, status: 'Chưa giao', date: '2025-11-08', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/9.png' },
   { orderCode: 'DH010', product: 'Nón bucket', quantity: 1, price: 150000, status: 'Đang xử lý', date: '2025-11-07', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/10.png' },
 
-  { orderCode: 'DH011', product: 'Áo len cardigan', quantity: 1, price: 620000, status: 'Đã giao', date: '2025-11-06', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/11.png' },
-  { orderCode: 'DH012', product: 'Giày boots nữ', quantity: 1, price: 980000, status: 'Đang xử lý', date: '2025-11-05', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/12.png' },
-  { orderCode: 'DH013', product: 'Quần baggy', quantity: 2, price: 420000, status: 'Đã giao', date: '2025-11-04', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/13.png' },
-  { orderCode: 'DH014', product: 'Áo polo nam', quantity: 2, price: 300000, status: 'Đã giao', date: '2025-11-03', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/14.png' },
-  { orderCode: 'DH015', product: 'Chân váy chữ A', quantity: 1, price: 280000, status: 'Chưa giao', date: '2025-11-02', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/15.png' },
-  { orderCode: 'DH016', product: 'Áo oversize nữ', quantity: 3, price: 270000, status: 'Đang xử lý', date: '2025-11-01', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/16.png' },
-  { orderCode: 'DH017', product: 'Giày chạy bộ', quantity: 1, price: 1500000, status: 'Đã giao', date: '2025-10-30', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/17.png' },
-  { orderCode: 'DH018', product: 'Áo sweater nỉ', quantity: 2, price: 410000, status: 'Chưa giao', date: '2025-10-29', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/18.png' },
-  { orderCode: 'DH019', product: 'Túi đeo chéo', quantity: 1, price: 390000, status: 'Đang xử lý', date: '2025-10-28', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/19.png' },
-  { orderCode: 'DH020', product: 'Quần tây nam', quantity: 2, price: 530000, status: 'Đã giao', date: '2025-10-27', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/20.png' },
+//   { orderCode: 'DH011', product: 'Áo len cardigan', quantity: 1, price: 620000, status: 'Đã giao', date: '2025-11-06', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/11.png' },
+//   { orderCode: 'DH012', product: 'Giày boots nữ', quantity: 1, price: 980000, status: 'Đang xử lý', date: '2025-11-05', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/12.png' },
+//   { orderCode: 'DH013', product: 'Quần baggy', quantity: 2, price: 420000, status: 'Đã giao', date: '2025-11-04', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/13.png' },
+//   { orderCode: 'DH014', product: 'Áo polo nam', quantity: 2, price: 300000, status: 'Đã giao', date: '2025-11-03', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/14.png' },
+//   { orderCode: 'DH015', product: 'Chân váy chữ A', quantity: 1, price: 280000, status: 'Chưa giao', date: '2025-11-02', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/15.png' },
+//   { orderCode: 'DH016', product: 'Áo oversize nữ', quantity: 3, price: 270000, status: 'Đang xử lý', date: '2025-11-01', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/16.png' },
+//   { orderCode: 'DH017', product: 'Giày chạy bộ', quantity: 1, price: 1500000, status: 'Đã giao', date: '2025-10-30', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/17.png' },
+//   { orderCode: 'DH018', product: 'Áo sweater nỉ', quantity: 2, price: 410000, status: 'Chưa giao', date: '2025-10-29', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/18.png' },
+//   { orderCode: 'DH019', product: 'Túi đeo chéo', quantity: 1, price: 390000, status: 'Đang xử lý', date: '2025-10-28', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/19.png' },
+//   { orderCode: 'DH020', product: 'Quần tây nam', quantity: 2, price: 530000, status: 'Đã giao', date: '2025-10-27', image: 'https://prium.github.io/phoenix/v1.24.0/assets/img//products/20.png' },
 ])
 
 const formatMoney = (value) => {

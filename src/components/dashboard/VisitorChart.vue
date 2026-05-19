@@ -26,7 +26,8 @@ import { ElMessage } from 'element-plus'
 
 // Start: Biểu đồ
 const series = ref([
-  { name: 'Doanh thu', data: [44, 55, 41, 67, 22, 43, 50] }
+  { name: 'Lượt truy cập 7 ngày qua', type: 'column', color: '#0089FF', data: [44, 55, 41, 67, 22, 43, 50] },
+  { name: 'Lượt truy cập 14 ngày qua', type: 'column', color: '#735DFF', data: [20, 30, 2, 90, 23, 56, 0] }
 ])
 const chartOptions = ref({
   chart: {

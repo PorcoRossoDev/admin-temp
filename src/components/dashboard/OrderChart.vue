@@ -25,7 +25,8 @@ import { Sell } from '@element-plus/icons-vue'
 // Start: Biểu đồ
 const value = ref('Option1')
 const series = ref([
-  { name: 'Doanh thu', data: [44, 55, 41, 67, 22, 43, 50] }
+  { name: 'Doanh thu 7 ngày qua', type: 'column', color: '#0089FF', data: [44, 55, 41, 67, 22, 43, 50] },
+  { name: 'Doanh thu 14 ngày qua', type: 'column', color: '#735DFF', data: [20, 17, 39, 90, 45, 23, 10] },
 ])
 const options = [
   {
@@ -55,7 +56,7 @@ const chartOptions = ref({
   xaxis: { categories: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'] },
   // title: { text: 'TỔNG DOANH THU TRONG TUẦN', align: 'left' },
   colors: ['#1e85ff', '#3b82f6'],
-  plotOptions: { bar: { borderRadius: 3, columnWidth: '13px' } },
+  plotOptions: { bar: { borderRadius: 0, columnWidth: '15px' } },
   dataLabels: { enabled: false },
   yaxis: { title: { text: 'Triệu VNĐ' } },
   legend: { position: 'bottom' },

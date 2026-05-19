@@ -10,24 +10,20 @@
      <el-row :gutter="20" class="mt-5">
       <el-col v-for="(item, index) in info" :span="6">
         <div class="bg-white shadow-amber-100 p-5 rounded-2xl border border-gray-200">
-          <div class="flex gap-x-5">
-            <span class="flex bg-[#e9ecef] w-12 h-12 justify-center items-center rounded-full"><el-icon><Sell /></el-icon></span>
-            <div>
-              <h3 class="font-semibold text-lg">45/76</h3>
-              <p class="text-xs">Invoices Awaiting</p>
+          <div class="flex gap-x-5 items-center">
+            <span class="flex bg-[#e9ecef] w-10 h-10 justify-center items-center rounded-2xl"><el-icon><Sell :size="19" /></el-icon></span>
+            <div class="">
+              <h3 class="font-semibold text-md">Liên hệ</h3>
+              <p class="text-xs"></p>
             </div>
           </div>
-          <div class="mt-4">
-            <div class="flex justify-between items-center text-xs">
-              <span class="text-gray-500">Invoices Awaiting </span>
-              <san>$5,569 <span>(56%)</span></san>
+          <div class="mt-4 flex items-center gap-x-5 bg-[#f8f9fa] rounded-xl p-4">
+            <div class="w-[160px]">
+              <ApexChart type="bar" :options="chartOptions" :series="series" height="50" width="160" />
             </div>
-            <div>
-              <ApexChart type="bar" :options="chartOptions" :series="series" height="100" />
-              <div class="">
-                <span class="font-bold">$3,020</span>
-                <span class="">30.6%</span>
-              </div>
+            <div class="text-xs flx-1">
+              <div class="text-gray-500">Invoices Awaiting </div>
+              <div class="font-bold mt-1">$3,020</div>
             </div>
             <!-- <el-progress :percentage="50" :show-text="false" :stroke-width="3" :color="item.color" class="mt-2" /> -->
           </div>
@@ -103,7 +99,7 @@ const info = ref([
 
 // Start: Biểu đồ
 const series = ref([
-  { name: 'Doanh thu', data: [44, 55, 41, 67, 22, 43, 50] }
+  { name: 'Doanh thu', data: [44, 55, 41, 67, 22, 43, 50, 60, 30, 10] }
 ])
 
 const chartOptions = ref({
@@ -111,6 +107,9 @@ const chartOptions = ref({
     id: 'bar',
     toolbar: {
       show: false
+    },
+    sparkline: {
+      enabled: true
     }
   },
 
@@ -118,10 +117,10 @@ const chartOptions = ref({
 
   plotOptions: {
     bar: {
-      borderRadius: 4,
+      borderRadius: 2,
       borderRadiusApplication: 'end',
       horizontal: false,
-      columnWidth: '40%' // 👈 đẹp hơn barHeight khi vertical
+      columnWidth: '70%' // 👈 đẹp hơn barHeight khi vertical
     }
   },
 
@@ -179,3 +178,10 @@ const chartOptions = ref({
   }
 })
 </script>
+
+<style scoped>
+:deep(.el-table__header thead tr th) {
+    background-color: #eff2f7!important;
+    padding-block: 14px!important;
+}
+</style>
